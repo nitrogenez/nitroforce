@@ -6,7 +6,7 @@
 
 
 ## **DESCRIPTION**
-**NITROFORCE-RS** picks random number from 0..9 4 times and passes generated 4-digit combination into Android smartphone through **adb**.
+**NITROFORCE-RS** picks numbers in range 0..9 from pin list and passes 4-digit combination into Android smartphone through **adb**.
 
 > **NOTICE**  
 > This software was developed for educational purposes ONLY.  
