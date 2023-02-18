@@ -3,7 +3,9 @@ use std::env;
 use std::process::exit;
 
 mod pin4d;
+mod passwd;
 
+use crate::passwd::Passwd;
 use crate::pin4d::Pin4D;
 
 
@@ -73,6 +75,18 @@ fn main() {
 
             else {
                 Pin4D::from_file(&args[i + 1], &active_device);
+                exit(0);
+            }
+        }
+
+        else if args[i] == "--passwd" || args[i] == "-p" {
+            if args.get(i + 1) == None {
+                print_help();
+                exit(0);
+            }
+
+            else {
+                Passwd::random(&active_device, args[i + 1].parse::<usize>().unwrap());
                 exit(0);
             }
         }
