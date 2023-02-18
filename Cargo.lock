@@ -90,8 +90,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "nitroforce-rs"
-version = "0.2.0"
+name = "nitroforce"
+version = "0.2.1"
 dependencies = [
  "mozdevice",
  "rand",
