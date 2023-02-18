@@ -1,12 +1,13 @@
 // std
 use std::env;
 use std::process::exit;
+use std::convert::TryFrom;
 
-mod pin4d;
+mod npin;
 mod passwd;
 
 use crate::passwd::Passwd;
-use crate::pin4d::Pin4D;
+use crate::npin::NPin;
 
 
 fn print_help() {
@@ -61,8 +62,14 @@ fn main() {
                 exit(0);
             }
 
-            else if args.get(i + 1).unwrap() == &String::from("p4") {
-                Pin4D::random(&active_device);
+            else {
+                let arg: u32 = args[i + 1].parse().unwrap();
+                let len = usize::try_from(arg).unwrap();
+
+                println!("{arg}");
+                println!("{len}");
+
+                NPin::random(&active_device, len);
                 exit(0);
             }
         }
@@ -74,7 +81,7 @@ fn main() {
             }
 
             else {
-                Pin4D::from_file(&args[i + 1], &active_device);
+                NPin::from_file(&args[i + 1], &active_device);
                 exit(0);
             }
         }

