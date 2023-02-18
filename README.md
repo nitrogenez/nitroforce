@@ -2,11 +2,11 @@
   <img align=center src=icon.webp width=30% alt=Icon></img>
 </h2>
 
-<h1 align=center><b>NITROFORCE-RS</b></h1>
+<h1 align=center><b>NITROFORCE</b></h1>
 
 
 ## **DESCRIPTION**
-**NITROFORCE-RS** picks numbers in range 0..9 from pin list and passes 4-digit combination into Android smartphone through **adb**.
+**NITROFORCE** picks numbers in range 0..9 from pin list and passes 4-digit combination into Android smartphone through **adb**.
 
 > **NOTICE**  
 > This software was developed for educational purposes ONLY.  
@@ -32,16 +32,16 @@ Author do not take any responsibility for his software's users or any unfair/mal
 + **Linux/MacOS X**
   - Clone or download repository: `git clone https://github.com/nitrogenez/nitroforce`
   - Connect target device to your machine via USB
-  - Goto `nitroforce-rs` directory: `cd /path/to/nitroforce-rs`
+  - Goto `nitroforce` directory: `cd /path/to/nitroforce`
   - Build project
 
 
 ## **EXAMPLE**
 ```bash
 git clone https://github.com/nitrogenez/nitroforce
-cd ~/nitroforce-rs
+cd ~/nitroforce
 cargo build --release
-./target/release/nitroforce-rs
+./target/release/nitroforce
 ```
 
 ## **LICENSE**
